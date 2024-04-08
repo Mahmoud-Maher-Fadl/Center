@@ -1,0 +1,65 @@
+﻿@model Core.Models.Center.Center
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Center Card</title>
+    <style>
+        /* Container styling */
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        /* Card title styling */
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Button styling */
+        .btn-container {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- Container for the card -->
+<div class="container">
+    <!-- Card title -->
+    <h2 class="card-title">@Model.Name</h2>
+
+    <!-- Button container -->
+    <div class="btn-container">
+        <!-- Button for Teachers -->
+        <a asp-action="Index" asp-controller="Teachers" asp-route-centerId="@Model.Id" class="btn btn-primary">
+            Teachers <span class="badge bg-secondary">@Model.Teachers.Count</span>
+        </a>
+
+        <!-- Button for Courses -->
+        <a asp-action="Index" asp-controller="Courses" asp-route-centerId="@Model.Id" class="btn btn-primary">
+            Courses <span class="badge bg-secondary">@Model.Courses.Count</span>
+        </a>
+
+        <!-- Button for Students -->
+        <a asp-action="Index" asp-controller="Students" asp-route-centerId="@Model.Id" class="btn btn-primary">
+            Students <span class="badge bg-secondary">@Model.Students.Count</span>
+        </a>
+    </div>
+
+    <!-- Additional content or buttons can be added here -->
+</div>
+</body>
+</html>

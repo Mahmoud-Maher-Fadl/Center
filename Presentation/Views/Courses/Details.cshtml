@@ -1,0 +1,63 @@
+﻿@model Core.ViewModels.Courses.GetCourseByIdVm
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">Price: @Model.Price</p>
+        <p class="card-text">Hours: @Model.Hours</p>
+        <p class="card-text">Student Count: @Model.StudentCount</p>
+        <p class="card-text">Teacher Count: @Model.TeachersCount</p>
+    </div>
+</div>
+
+<div class="row mb-4">
+    @if (Model.Students.Any())
+    {
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Students</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Grade</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var student in Model.Students)
+                            {
+                                <tr>
+                                    <td>
+                                        <a asp-action="Details" asp-controller="Students" asp-route-id="@student.StudentId" class="list-group-item list-group-item-action">@student.StudentName</a>
+                                    </td>
+                                    <td>@student.Grade</td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @if (Model.Teachers.Any())
+    {
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Teachers</h5>
+                    <div class="list-group">
+                        @foreach (var teacher in Model.Teachers)
+                        {
+                            <a asp-action="Details" asp-controller="Teachers" asp-route-id="@teacher.TeacherId" class="list-group-item list-group-item-action">
+                                @teacher.TeacherName
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

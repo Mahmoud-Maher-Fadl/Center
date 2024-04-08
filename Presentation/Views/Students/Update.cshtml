@@ -1,0 +1,100 @@
+﻿@model Core.ViewModels.Students.UpdateStudentVm
+@{
+    ViewData["Title"] = "Update";
+}
+
+<form class="mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Update Student Information</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label">Name</label>
+                        <input id="name" asp-for="Name" value="@Model.Name" class="form-control"/>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label">Address</label>
+                        <input id="address" asp-for="Address" value="@Model.Address" class="form-control"/>
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Ssn" class="control-label">SSN</label>
+                        <input id="ssn" asp-for="Ssn" value="@Model.Ssn" class="form-control"/>
+                        <span asp-validation-for="Ssn" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Age" class="control-label">Age</label>
+                        <input id="age" asp-for="Age" value="@Model.Age" class="form-control"/>
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="SelectedCourses" class="control-label">Courses</label>
+                        <select id="selectedCourses" asp-for="SelectedCourses" class="form-select" asp-items="@Model.Courses">
+                            <option value="0">Select Courses</option>
+                        </select>
+                        <span asp-validation-for="SelectedCourses" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <button id="updateStudentBtn" type="button" class="btn btn-primary">Update</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+{
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script>
+    $(document).ready
+    (
+        function() 
+        {
+            $("#updateStudentBtn").click
+            (
+                function()
+                {
+                      updateStudent()
+                }
+            )
+        }  
+    )
+    function updateStudent() 
+    {
+        var student=
+        {
+             name: $("#name").val(),
+             address:$("#address").val(),
+             ssn:$("#ssn").val(),
+             age:$("#age").val(),
+             selectedCourses:$("#selectedCourses").val(),
+        };
+        console.log(student)
+        $.ajax
+        (
+            {
+                type:"POST",
+                url:"/Students/Update",
+                contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+                data:student,
+                success:function (result)
+                {
+                    console.log(result.message)
+                    if (result.isSuccess)
+                    {
+                        window.location.href="/Students"
+                    }
+                    else
+                    {
+                         $('.toast-body').text(result.message);
+                         $('.toast').toast('show'); 
+                    }
+                }
+            }
+        )
+    }
+    </script>
+}

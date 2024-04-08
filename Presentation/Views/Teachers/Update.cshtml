@@ -1,0 +1,125 @@
+﻿@using Core.Settings
+@model Core.ViewModels.Teachers.UpdateTeacherVm
+@{
+    ViewData["Title"] = "Update";
+}
+
+<form enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Name</label>
+        <input id="name" asp-for="Name" value="@Model.Name" class="form-control"/>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Salary" class="control-label">Salary</label>
+        <input id="salary" asp-for="Salary" value="@Model.Salary" class="form-control"/>
+        <span asp-validation-for="Salary" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Age" class="control-label">Age</label>
+        <input id="age" asp-for="Age" value="@Model.Age" class="form-control"/>
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+
+    @*<div class="form-group">
+        <input type="hidden" asp-for="CenterId" value="@Model.CenterId" class="form-control"/>
+    </div>*@
+
+    <div class="form-group">
+        <label asp-for="CourseId" class="form-label mt-4">Course</label>
+        <select id="courseId" class="form-select" asp-for="CourseId" asp-items="Model.Courses">
+            <option value="">Select a Course</option>
+        </select>
+        <span asp-validation-for="CourseId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <img id="image" src="/assets/images/teachers/@Model.Image" alt="Teacher Image" class="img-fluid" style="max-width: 300px; max-height: 300px;"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Cover" class="form-label mt-4">Cover</label>
+        <input id="cover" type="file" class="form-control" asp-for="Cover"/>
+        <small class="form-text text-muted"> Only @FileSettings.AllowedExtension files are allowed with max size @FileSettings.MaxFileSizeInMb MB.</small>
+        <span asp-validation-for="Cover" class="text-danger d-block"></span>
+    </div>
+
+    <button id="updateTeacherBtn" type="button" class="btn btn-primary mt-4">Save Update</button>
+</form>
+
+@section Scripts {
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script>
+    $(document).ready
+    (
+        function() 
+        {
+            $("#updateTeacherBtn").click
+            (
+                function() 
+                {   
+                    updateTeacher();                  
+                }
+            )   
+        }
+    )
+    function updateTeacher()
+    {
+        var formData = new FormData();
+        formData.append("Name", $('#name').val());
+        formData.append("Salary", $('#salary').val());
+        formData.append("Age", $('#age').val());
+        formData.append("CourseId", $('#courseId').val());
+        formData.append("Cover", $('#cover')[0].files[0]); // Append the file
+        console.log(formData);
+        $.ajax
+        (
+            {
+                type:"POST",
+                url:"/Teachers/Update",
+                contentType: false, // Set contentType to false for FormData
+                processData: false, // Set processData to false for FormData                
+                data:formData,
+                success:function (result)
+                {
+                    console.log(result.message)
+                    if (result.isSuccess)
+                    {
+                        window.location.href="/Teachers"
+                    }
+                    else
+                    {
+                         $('.toast-body').text(result.message);
+                         $('.toast').toast('show'); 
+                    }
+                }                
+            }
+        )
+    }
+    
+    </script>
+    <script>
+        // Function to update image src when a new cover is selected
+        document.getElementById('cover').addEventListener('change', function () {
+            var file = this.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                document.getElementById('image').src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        });
+    </script>
+}
+
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+    <div class="toast-header">
+        <strong class="me-auto">Error</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        <!-- Toast message will be inserted here -->
+    </div>
+</div>

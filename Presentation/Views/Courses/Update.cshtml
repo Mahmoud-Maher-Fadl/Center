@@ -1,0 +1,89 @@
+﻿@model Core.ViewModels.Courses.UpdateCourseVm
+@{
+    ViewData["Title"] = "Update Course";
+}
+<form>
+    <div class="mb-3">
+        <label for="name" class="form-label">Course Name</label>
+        <input id="name" type="text" class="form-control" asp-for="Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="hours" class="form-label">Hours</label>
+        <input id="hours" type="text" class="form-control" asp-for="Hours">
+        <span asp-validation-for="Hours" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input id="price" type="text" class="form-control" asp-for="Price">
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="d-grid">
+        <button id="updateCourseBtn" type="button" class="btn btn-primary">Update</button>
+    </div>
+</form>
+
+@section Scripts
+{
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script>
+    $(document).ready
+    (
+        function ()
+        {
+            $("#updateCourseBtn").click
+            (
+                function ()
+                {
+                    updateCourse()
+                }
+            )
+        }
+    )
+    function updateCourse()
+    {
+        const course=
+        {
+            name:$('#name').val(),
+            hours:$('#hours').val(),
+            price:$('#price').val(),
+        };
+        console.log(course);
+        $.ajax
+        (
+            {
+                type:"POST",
+                url:"/Courses/Update",
+                contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+                data:course,
+                success:function (result)
+                {
+                    console.log(result.message)
+                    if (result.isSuccess)
+                    {
+                        window.location.href="/Courses"
+                    }
+                    else
+                    {
+                         $('.toast-body').text(result.message);
+                         $('.toast').toast('show'); 
+                    }
+                }
+            }
+        )
+    }
+    
+    </script>
+}
+
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+    <div class="toast-header">
+        <strong class="me-auto">Error</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        <!-- Toast message will be inserted here -->
+    </div>
+</div>

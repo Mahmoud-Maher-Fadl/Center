@@ -1,0 +1,90 @@
+﻿@model Core.ViewModels.Center.UpdateCenterVm
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <h1>Edit Center</h1>
+    <hr>
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label for="Name" class="form-label">Name</label>
+            <input id="Name" asp-for="Name" class="form-control" value="@Model.Name">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label for="Location" class="form-label">Location</label>
+            <input id="Location" asp-for="Location" class="form-control" value="@Model.Location">
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+        <div class="col-md-12">
+            <button type="button" id="updateCenterBtn" value="@Model.Id" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready
+        (
+            function () 
+            {
+                $('#updateCenterBtn').click
+                (function () 
+                    {
+                        updateCenter();
+                    }
+                );
+            }
+        );
+        function updateCenter() 
+        {
+            var center = 
+            {
+                Id:$('#updateCenterBtn').val(),
+                Name: $('#Name').val(),
+                Location: $('#Location').val()
+            };
+            console.log(center);
+            $.ajax
+            (
+                {
+                    type: "POST",
+                    url: "/center/Update",
+                    contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                    data: center,
+                    success: function (result) 
+                    {
+                        console.log(result.message);
+                        if (result.isSuccess)
+                            {
+                                window.location.href = "/Center";
+                            }
+                        else    
+                            {
+                                 $('.toast-body').text(result.message);
+                                 $('.toast').toast('show'); 
+                            }
+                    },
+                    error: function () 
+                    {
+                            console.log("Error updating center data.");
+                    }
+                }
+            );
+          
+        }
+    </script>
+}
+
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+    <div class="toast-header">
+        <strong class="me-auto">Error</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        <!-- Toast message will be inserted here -->
+    </div>
+</div>

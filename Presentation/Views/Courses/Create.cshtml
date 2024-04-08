@@ -1,0 +1,99 @@
+﻿@model Core.ViewModels.Courses.CreateCourseVm 
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="container">
+    <h2>Create New Course</h2>
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="Name" class="form-label">Course Name</label>
+            <input id="name" asp-for="Name" value="@Model.Name" class="form-control"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Hours" class="form-label">Duration (Hours)</label>
+            <input id="hours" asp-for="Hours" value="@Model.Hours" class="form-control"/>
+            <span asp-validation-for="Hours" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Price" class="form-label">Price</label>
+            <input id="price" asp-for="Price" value="@Model.Price" class="form-control"/>
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="col-md-12">
+            <button id="createCourseBtn" type="button" class="btn btn-primary">Create Course</button>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts
+{
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script>
+        debugger;
+        $(document).ready
+        (   
+            function() 
+            {
+                $("#createCourseBtn")
+                .click
+                (
+                    function ()
+                    {
+                        createCourse();
+                    }
+                        
+                )
+                
+            }
+        )
+      
+        function createCourse()
+        {
+            var course=
+            {
+                name:$('#name').val(),
+                hours:$('#hours').val(),
+                price:$('#price').val(),
+            };
+            console.log(course);
+            $.ajax
+            (
+                {
+                    type:"POST",
+                    url:"/Courses/SaveCreate",
+                    contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                    data:course,
+                    // this don't bind correctly result 'view model is null'
+                    /*contentType: 'application/json', // Changed content type to JSON
+                    data: JSON.stringify(student), // Serialized data to JSON*/
+                    success:function (result)
+                    {
+                        if (result.isSuccess)
+                        {
+                             console.log(result.message)
+                             window.location.href="/Courses"   
+                        }
+                        else 
+                        {
+                            $('.toast-body').text(result.message);
+                            $('.toast').toast('show');
+                        }
+                    },
+                  
+                }
+            )
+        }
+    </script>
+}
+
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+    <div class="toast-header">
+        <strong class="me-auto">Error</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        <!-- Toast message will be inserted here -->
+    </div>
+</div>

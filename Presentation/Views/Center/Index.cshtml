@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<a asp-action="Create" class="btn btn-success">Add Center</a>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <table id="centersTable" class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="lib/jquery-3.7.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "/center/GetCenters",
+            type: "GET",
+            dataType:"json",
+            success: function (result) {
+                $('#centersTable tbody').empty();
+                result.forEach(function (center) {
+                    $('#centersTable tbody').append
+                    (`
+                                <tr>
+                                    <td>${center.name}</td>
+                                    <td>${center.location}</td>
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="Center Actions">
+                                            <a href="@Url.Action("Update", "Center")/${center.id}" class="btn btn-warning">Edit</a>
+                                            <a href="@Url.Action("Delete", "Center")/${center.id}" class="btn btn-danger">Delete</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                    `); 
+                });
+            },
+            error: function () {
+                console.log("Error fetching centers data.");
+            }
+        });
+    });
+</script>

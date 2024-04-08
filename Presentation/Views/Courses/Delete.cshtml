@@ -1,0 +1,56 @@
+﻿@*
+@model int
+
+<!-- Include the SweetAlert2 library -->
+<script src="~/lib/sweetalert2.all.min.js"></script>
+
+<!-- Retrieve the value of the 'teacherId' cookie -->
+@{
+    var request = new HttpContextAccessor().HttpContext?.Request;
+    var centerId = request?.Cookies["centerId"];
+}
+
+<!-- JavaScript code to display SweetAlert2 confirmation dialog -->
+<script>
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Make an AJAX request to the ConfirmDeletion action
+            const id = @Model;
+            $.ajax({
+                url: '@Url.Action("ConfirmDeletion", "Courses")',
+                type: 'POST',
+                data: { id: id },
+                
+$1$success: function (response) {
+// Handle success response if needed
+Swal.fire({
+title: "Deleted!",
+text: "Your file has been deleted.",
+icon: "success"
+}).then((result) => {
+// Redirect to Index action with centerId parameter
+window.location.href = '@Url.Action("Index", "Courses")' + '?centerId=' + '@centerId';
+});
+},
+error: function (xhr, status, error) {
+// Handle error response if needed
+console.error(xhr.responseText);
+}#1#
+                
+            });
+        } else {
+            // Redirect to Index action even if deletion is canceled
+            window.location.href = '@Url.Action("Index", "Courses")';// + '?centerId=' + '@centerId';
+        }
+    });
+</script>
+*@
+

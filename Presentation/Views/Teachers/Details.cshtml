@@ -1,0 +1,22 @@
+﻿@model Core.ViewModels.Teachers.GetTeacherByIdVm
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Name: @Model.Name</h5>
+        <p class="card-text">Salary: @Model.Salary</p>
+        <p class="card-text">Age: @Model.Age</p>
+        @*<p class="card-text">Course: @Model.CourseName</p>*@
+        @{
+            if (!string.IsNullOrEmpty(Model.CourseName))
+            {
+                <a asp-action="TeacherCourseStudents" asp-controller="Teachers" asp-route-id="@Model.CourseId" class="list-group-item list-group-item-action">@Model.CourseName</a>
+            }
+            else
+            {
+                <p class="card-text">Course: No Course yet</p>
+            }
+        }
+
+        <img src="/assets/images/teachers/@Model.Image" alt="Teacher Image" class="img-fluid" />
+    </div>
+</div>

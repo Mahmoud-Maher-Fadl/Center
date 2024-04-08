@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<a asp-action="Create" class="btn btn-success mb-3">Add Course</a>
+
+<div class="row">
+    <div class="col-md-12">
+        <table id="coursesTable" class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Hours</th>
+                <th>Students</th>
+                <th>Teachers</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="lib/jquery-3.7.1.min.js"></script>
+<script>
+  $(document).ready(function (){
+      $.ajax({
+      url:"/Courses/GetAll/",
+      type:"Get",
+      dataType:"json",
+      success:function (result)
+      {
+          $("#coursesTable tbody").empty()
+          result.forEach(function (course){
+              $("#coursesTable tbody").append(`
+              <tr>
+                <td>${course.name}</td>
+                <td>${course.price}</td>
+                <td>${course.hours}</td>
+                <td>${course.studentCount}</td>
+                <td>${course.teachersCount}</td>
+              <td>
+              <td>
+                  <div class="btn-group" role="group" aria-label="Courses Actions">
+                      <a href="@Url.Action("Details", "Courses")/${course.id}" class="btn btn-info">Details</a>
+                      <a href="@Url.Action("Update", "Courses")/${course.id}" class="btn btn-warning">Edit</a>
+                      <a href="@Url.Action("Delete", "Courses")/${course.id}" class="btn btn-danger">Delete</a>
+                  </div>
+              </td>
+              </tr>
+              `);
+          });
+      },
+      error: function () { console.log("Error fetching courses data.");}
+      });
+  });
+</script>

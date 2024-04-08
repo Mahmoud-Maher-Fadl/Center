@@ -1,0 +1,40 @@
+﻿@model Core.ViewModels.Students.StudentCenterCourses
+
+<form asp-action="SetStudentCourses" method="post">
+    <div class="row mb-2">
+        @if (Model.Courses.Any())
+        {
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Center Courses</h5>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Course</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <input type="hidden" value="@Model.StudentId" asp-for="StudentId"/>
+                                @for (int i = 0; i < Model.Courses.Count; i++)
+                                {
+                                    var courseId = Model.Courses[i].Value;
+                                    <tr>
+                                        <td>
+                                                <input type="checkbox" name="SelectedCourses" value="@Model.Courses[i].Value"
+                                                   @(Model.SelectedCourses.Contains(int.Parse(Model.Courses[i].Value)) ? "checked" : "")/>
+                                            <label for="chk_@courseId">@Model.Courses[i].Text</label>
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

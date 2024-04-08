@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<a asp-action="Create" class="btn btn-success mb-3">Add Student</a>
+
+<div class="row">
+    <div class="col-md-12">
+        <table id="studentsTable" class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Age</th>
+                <th>SSN</th>
+                <th>Registered Courses</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="lib/jquery-3.7.1.min.js"></script>
+<script>
+$(document).ready(function() 
+{
+    $.ajax
+    ({
+        url:"/Students/GetAll/",
+        type:"Get",
+        dataType:"json",
+        success:function(result) 
+        {
+            $("#studentsTable tbody").empty();
+            result.forEach
+            (function (student)
+                {
+                    $("#studentsTable tbody").append
+                        (`
+                            <tr>
+                                <td>${student.name}</td>
+                                <td>${student.address}</td>
+                                <td>${student.age}</td>
+                                <td>${student.ssn}</td>
+                                <td>${student.coursesCount}</td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Student Actions">
+                                        <a href="@Url.Action("Details","Students")/${student.id}" class="btn btn-primary">Details</a>
+                                        <a href="@Url.Action("Update","Students")/${student.id}" class="btn btn-warning">Edit</a>
+                                        <a href="@Url.Action("Delete","Students")/${student.id}" class="btn btn-danger">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        `)
+                }
+            )
+          
+        }
+    })
+  
+})
+</script>

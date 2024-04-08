@@ -1,0 +1,84 @@
+﻿@model Core.ViewModels.Center.CreateCenterVm
+@{
+    ViewData["Title"] = "Create";
+}
+// from dom
+<div class="container">
+    <h1>Create Center</h1>
+    <hr>
+    <form id="createCenterForm" method="post" class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="Name" class="form-label">Name</label>
+            <input id="name" asp-for="Name" value="@Model.Name" class="form-control"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Password" class="form-label">Password</label>
+            <input id="password" type="password" asp-for="Password" value="@Model.Password" class="form-control"/>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Location" class="form-label">Location</label>
+            <input id="location" asp-for="Location" value="@Model.Location" class="form-control"/>
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="ConfirmPassword" class="form-label">ConfirmPassword</label>
+            <input id="confirmPassword" type="password" asp-for="ConfirmPassword" value="@Model.ConfirmPassword" class="form-control"/>
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input id="email" asp-for="Email" value="@Model.Email" class="form-control"/>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="col-12">
+            @* <button type="button" id="createCenterBtn" onclick="createCenter()" class="btn btn-primary">Create</button> *@
+            <button type="button" id="createCenterBtn" class="btn btn-primary">Create</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+    <script src="/lib/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#createCenterBtn').click(function () {
+                createCenter();
+            });
+        });      
+        function createCenter() {
+            debugger;
+            const data = $("#createCenterForm").serialize();
+            $.ajax({
+                type: 'POST',
+                url: '/Center/SaveCreate',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                data: data,
+                success: function (result) {
+                    if (result.isSuccess) 
+                    {
+                        window.location.href = "/Center";
+                    } 
+                    else 
+                    {
+                         $('.toast-body').text(result.message);
+                         $('.toast').toast('show');
+                    }
+                },
+            });
+        }
+    </script>
+}
+
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+    <div class="toast-header">
+        <strong class="me-auto">Error</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        <!-- Toast message will be inserted here -->
+    </div>
+</div>

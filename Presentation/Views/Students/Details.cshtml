@@ -1,0 +1,49 @@
+﻿@model Core.ViewModels.Students.GetStudentByIdVm
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Student Information</h5>
+        <p class="card-text">
+            <strong>Name:</strong> @Model.Name
+        </p>
+        <p class="card-text">
+            <strong>Address:</strong> @Model.Address
+        </p>
+        <p class="card-text">
+            <strong>Age:</strong> @Model.Age
+        </p>
+        <p class="card-text">
+            <strong>SSN:</strong> @Model.SSN
+        </p>
+    </div>
+</div>
+
+@if (Model.Courses.Any())
+{
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Courses</h5>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Grade</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var course in Model.Courses)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="Details" asp-controller="Courses" asp-route-id="@course.CourseId" class="list-group-item list-group-item-action">@course.CourseName</a>
+                            </td>
+                            <td>@course.Grade</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

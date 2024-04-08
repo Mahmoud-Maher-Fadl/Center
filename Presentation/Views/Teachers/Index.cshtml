@@ -1,0 +1,83 @@
+﻿@model int
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<a asp-action="Create"  class="btn btn-success">Add Teacher</a>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <table id="teachersTable" class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Age</th>
+                <th>Course</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+         
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+<script src="lib/jquery-3.7.1.min.js"></script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+    url:"/Teachers/GetAll/",
+    type:"Get",
+    dataType:"json",
+    success:function (result)
+    {
+        $("#teachersTable tbody").empty();
+        result.forEach(function (teacher){
+            $("#teachersTable tbody").append
+                (`
+                    <tr>
+                        <td>${teacher.name}</td>
+                        <td>${teacher.salary}</td>
+                        <td>${teacher.age}</td>
+                        <td>${teacher.courseName}</td>
+                        <td>
+                          <div class="btn-group" role="group" aria-label="Center Actions">
+                              <a href="@Url.Action("Details", "Teachers")/${teacher.id}" class="btn btn-info">Details</a>
+                              <a href="@Url.Action("Update", "Teachers")/${teacher.id}" class="btn btn-warning">Edit</a>
+                              <a href="@Url.Action("Delete", "Teachers")/${teacher.id}" class="btn btn-danger">Delete</a>
+                          </div>
+                        </td>
+                    </tr>
+                `)
+        })
+    },
+    error: function () { console.log("Error fetching teachers data.");}
+
+    })
+})
+
+</script>
+
+
+
+@*@foreach (var teacher in Model)
+{
+    <tr>
+        <td>@teacher.Name</td>
+        <td>@teacher.Salary</td>
+        <td>@teacher.Age</td>
+        <td>@teacher.CourseName</td>
+        <td>
+            <div class="btn-group" role="group" aria-label="Teacher Actions">
+                <a asp-action="Details" asp-route-id="@teacher.Id" class="btn btn-info">Details</a>
+                <a asp-action="Update" asp-route-id="@teacher.Id" class="btn btn-warning">Edit</a>
+                <a asp-action="Delete" asp-route-id="@teacher.Id" class="btn btn-danger">Delete</a>
+            </div>
+        </td>
+    </tr>
+}*@

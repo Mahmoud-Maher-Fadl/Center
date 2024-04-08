@@ -1,0 +1,144 @@
+﻿@model Core.ViewModels.Students.CreateStudentVm
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form class="mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Create New Student</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="hidden" asp-for="CenterId" value="@Model.CenterId" class="form-control" />
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label">Name</label>
+                        <input id="name" asp-for="Name" value="@Model.Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label">Email</label>
+                        <input id="email" asp-for="Email" value="@Model.Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label">Address</label>
+                        <input id="address" asp-for="Address" value="@Model.Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SSN" class="control-label">SSN</label>
+                        <input id="ssn" asp-for="SSN" value="@Model.SSN" class="form-control" />
+                        <span asp-validation-for="SSN" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Password" class="form-label">Password</label>
+                        <input id="password" type="password" asp-for="Password" value="@Model.Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="ConfirmPassword" class="form-label">ConfirmPassword</label>
+                        <input id="confirmPassword" type="password" asp-for="ConfirmPassword" value="@Model.ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Age" class="control-label">Age</label>
+                        <input id="age" asp-for="Age" value="@Model.Age" class="form-control" />
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SelectedCourses" class="control-label">Courses</label>
+                        <select id="selectedCourses" asp-for="SelectedCourses" class="form-select" asp-items="Model.Courses">
+                            <option value="">Select Course</option>
+                        </select>
+                        <span asp-validation-for="SelectedCourses" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <button id="createStudentBtn" type="button" class="btn btn-primary">Create</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+{
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready
+        (
+            function() 
+            {
+              $("#createStudentBtn")
+                .click
+                (
+                    function() 
+                    {
+                        createStudent();
+                    }
+                    
+                )
+            }
+        )
+        function createStudent()
+        {
+            var student=
+            {
+                name: $("#name").val(),
+                email:$("#email").val(), 
+                address:$("#address").val(),
+                ssn:$("#ssn").val(),
+                password:$("#password").val(),
+                confirmPassword:$("#confirmPassword").val(),
+                age:$("#age").val(),
+                selectedCourses:$("#selectedCourses").val(),
+            };
+            console.log(student);
+            $.ajax
+            (
+                {
+                    type:"POST",
+                    url:"/Students/SaveCreate",
+                    contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                    data:student,
+                    // this don't bind correctly result 'view model is null'
+                    /*contentType: 'application/json', // Changed content type to JSON
+                    data: JSON.stringify(student), // Serialized data to JSON*/
+                    success:function(result) 
+                    {
+                        if (result.isSuccess)
+                        {
+                            console.log(result.message)
+                            window.location.href="/Students"
+                        }
+                        else 
+                        {
+                            console.log(result.message);
+                            $('.toast-body').text(result.message);
+                            $('.toast').toast('show');   
+                        }
+                      
+                    },
+                    error:function (result)
+                    {
+                        console.log("error");
+                         $('.toast-body').text(result.message);
+                         $('.toast').toast('show'); 
+                    }
+                }
+            )
+        }
+    
+    </script>
+}
+
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+    <div class="toast-header">
+        <strong class="me-auto">Error</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        <!-- Toast message will be inserted here -->
+    </div>
+</div>
