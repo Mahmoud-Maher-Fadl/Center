@@ -1,4 +1,5 @@
-﻿using Core.common;
+﻿using System.Linq;
+using Core.common;
 using Core.ViewModels.StudentCourse;
 using Core.ViewModels.Teachers;
 using Microsoft.AspNetCore.Authorization;

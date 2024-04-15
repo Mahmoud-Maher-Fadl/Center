@@ -1,9 +1,9 @@
-﻿using Core.common;
+﻿using System.Linq;
+using Core.common;
 using Core.Models.Teacher;
 using Core.Models.User;
 using Core.ViewModels.Teachers;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Presentation.Validations.Interfaces;
 

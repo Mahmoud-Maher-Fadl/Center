@@ -4,7 +4,7 @@ using Core.Models.User;
 using Core.ViewModels.Center;
 using Microsoft.AspNetCore.Identity;
 using Presentation.Validations.Interfaces;
-
+using System.Linq;
 namespace Presentation.Validations.Implementations;
 
 public class CentersCrud : ICentersCrud

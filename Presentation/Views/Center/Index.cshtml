@@ -1,12 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+<link href="~/lib/datatables/css/dataTables.bootstrap4.css" rel="stylesheet"/>
 <a asp-action="Create" class="btn btn-success">Add Center</a>
 
 <div class="row mt-4">
     <div class="col-md-12">
-        <table id="centersTable" class="table">
+        <table id="centersTable" class="table table-striped table-bordered dt-responsive nowrap">
             <thead>
             <tr>
                 <th>Name</th>
@@ -20,35 +20,42 @@
     </div>
 </div>
 
-<script src="lib/jquery-3.7.1.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-        $.ajax({
-            url: "/center/GetCenters",
-            type: "GET",
-            dataType:"json",
-            success: function (result) {
-                $('#centersTable tbody').empty();
-                result.forEach(function (center) {
-                    $('#centersTable tbody').append
-                    (`
-                                <tr>
-                                    <td>${center.name}</td>
-                                    <td>${center.location}</td>
-                                    <td>
-                                        <div class="btn-group" role="group" aria-label="Center Actions">
-                                            <a href="@Url.Action("Update", "Center")/${center.id}" class="btn btn-warning">Edit</a>
-                                            <a href="@Url.Action("Delete", "Center")/${center.id}" class="btn btn-danger">Delete</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                    `); 
-                });
-            },
-            error: function () {
-                console.log("Error fetching centers data.");
-            }
+@section Scripts
+{
+    <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#centersTable").dataTable({
+                "serverSide": true,
+                "filter": true,
+                "ajax": {
+                    "url": "/center/GetAll",
+                    "type": "POST",
+                    "dataType": "json",
+                },
+                "columnDefs": 
+                [
+                    /*{
+                    "targets": [0],
+                    "visible":false,
+                    "searchable":false,
+                    }*/
+                ],
+                "columns": [
+                    { "data": "name", "name": "Name", "autowidth": true },
+                    { "data": "location", "name": "Location", "autowidth": true },
+                    {
+                        "render": function (data, type, row) {
+                            var editUrl = '@Url.Action("Update", "Center")/' + row.id;
+                            var deleteUrl = '@Url.Action("Delete", "Center")/' + row.id;
+                            return '<a href="' + editUrl + '" class="btn btn-warning">Edit</a>' +
+                                   '<a href="' + deleteUrl + '" class="btn btn-danger">Delete</a>';
+                        },
+                        "orderable": false // Disable sorting for the Actions column
+                    }
+                ]
+            });
         });
-    });
-</script>
+    </script>
+}

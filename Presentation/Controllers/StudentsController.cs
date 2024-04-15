@@ -24,10 +24,17 @@ public class StudentsController : Controller
 
     [HttpGet]
     [Authorize(Roles = "Center")]
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
+    {
+        if (!int.TryParse(Request.Cookies["centerId"], out var centerId))
+            return Content("No Logged In Center");
+        var students = await _unitOfWork.Students.GetAll(centerId);
+        return View(students);
+    }
+    /*public IActionResult Index()
     {
         return View();
-    }
+    }*/
 
     public async Task<IActionResult> GetAll()
     {

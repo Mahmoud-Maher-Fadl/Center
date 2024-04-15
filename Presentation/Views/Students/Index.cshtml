@@ -1,6 +1,7 @@
-﻿@{
+﻿@*@{
     ViewData["Title"] = "Home Page";
 }
+<link href="~/lib/datatables/css/dataTables.bootstrap4.css" rel="stylesheet"/>
 <a asp-action="Create" class="btn btn-success mb-3">Add Student</a>
 
 <div class="row">
@@ -22,43 +23,115 @@
     </div>
 </div>
 
-<script src="lib/jquery-3.7.1.min.js"></script>
-<script>
-$(document).ready(function() 
+@section Scripts
 {
-    $.ajax
-    ({
-        url:"/Students/GetAll/",
-        type:"Get",
-        dataType:"json",
-        success:function(result) 
-        {
-            $("#studentsTable tbody").empty();
-            result.forEach
-            (function (student)
-                {
-                    $("#studentsTable tbody").append
-                        (`
-                            <tr>
-                                <td>${student.name}</td>
-                                <td>${student.address}</td>
-                                <td>${student.age}</td>
-                                <td>${student.ssn}</td>
-                                <td>${student.coursesCount}</td>
-                                <td>
-                                    <div class="btn-group" role="group" aria-label="Student Actions">
-                                        <a href="@Url.Action("Details","Students")/${student.id}" class="btn btn-primary">Details</a>
-                                        <a href="@Url.Action("Update","Students")/${student.id}" class="btn btn-warning">Edit</a>
-                                        <a href="@Url.Action("Delete","Students")/${student.id}" class="btn btn-danger">Delete</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        `)
-                }
-            )
-          
-        }
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
+    <script>
+    $(document).ready(function() 
+    {
+        $.ajax
+        ({
+            url:"/Students/GetAll/",
+            type:"Get",
+            dataType:"json",
+            success:function(result) 
+            {
+                $("#studentsTable tbody").empty();
+                result.forEach
+                (function (student)
+                    {
+                        $("#studentsTable tbody").append
+                            (`
+                                <tr>
+                                    <td>${student.name}</td>
+                                    <td>${student.address}</td>
+                                    <td>${student.age}</td>
+                                    <td>${student.ssn}</td>
+                                    <td>${student.coursesCount}</td>
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="Student Actions">
+                                            <a href="@Url.Action("Details", "Students")/${student.id}" class="btn btn-primary">Details</a>
+                                            <a href="@Url.Action("Update", "Students")/${student.id}" class="btn btn-warning">Edit</a>
+                                            <a href="@Url.Action("Delete", "Students")/${student.id}" class="btn btn-danger">Delete</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `)
+                    }
+                )
+              
+            }
+        })
+      
     })
-  
-})
-</script>
+    </script>
+}*@
+
+@model List<Core.ViewModels.Students.GetAllStudentsVm>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<link href="~/lib/datatables/css/dataTables.bootstrap4.css" rel="stylesheet"/>
+<a asp-action="Create" class="btn btn-success mb-3">Add Student</a>
+
+<div class="row">
+    <div class="col-md-12">
+        <table id="studentsTable" class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Age</th>
+                <th>SSN</th>
+                <th>Registered Courses</th>
+                <th >Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.Name</td>
+                    <td>@student.Address</td>
+                    <td>@student.Age</td>
+                    <td>@student.SSN</td>
+                    <td>@student.CoursesCount</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Student Actions">
+                            <a asp-action="Details" asp-route-id="@student.Id" class="btn btn-primary">Details</a>
+                            <a asp-action="Update" asp-route-id="@student.Id" class="btn btn-warning">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@student.Id" class="btn btn-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
+    <script>
+    $(document).ready(function() 
+    {
+          $("#studentsTable").dataTable
+            (
+                {
+                    "order": [], // Disable initial sorting
+                    "columnDefs": 
+                    [{
+                        "targets": [5], // Class to target columns
+                        "searchable":false,
+                        "orderable": false // Set specific columns to be non-sortable
+                    }]
+                }
+            );
+    })
+    </script>
+}

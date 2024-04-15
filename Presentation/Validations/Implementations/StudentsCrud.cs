@@ -6,6 +6,8 @@ using Core.ViewModels.Students;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Presentation.Validations.Interfaces;
+using System.Linq;
+
 
 namespace Presentation.Validations.Implementations;
 

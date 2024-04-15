@@ -618,3 +618,4 @@ G:\aait\Center\Presentation\bin\Debug\net7.0\System.Web.WebPages.dll
 G:\aait\Center\Presentation\bin\Debug\net7.0\Microsoft.Web.Infrastructure.dll
 G:\aait\Center\Presentation\obj\Debug\net7.0\Presentation.csproj.CopyComplete
 G:\aait\Center\Presentation\bin\Debug\net7.0\libman.json
+G:\aait\Center\Presentation\bin\Debug\net7.0\System.Linq.Dynamic.Core.dll

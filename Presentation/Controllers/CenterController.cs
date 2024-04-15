@@ -3,6 +3,7 @@ using Core.ViewModels.Center;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Validations.Interfaces;
+using static System.Int32;
 
 namespace Presentation.Controllers;
 
@@ -26,14 +27,17 @@ public class CenterController : Controller
     }
 
     [Authorize(Roles = "Admin")]
-    [HttpGet]
-    public IActionResult GetCenters()
+    [HttpPost]
+    public async Task<IActionResult> GetAll()
     {
-        var centers = _unitOfWork.Centers.GetAll().Result;
-        var recordsTotal = centers.Count;
-        var jsonData = new { recordsFiltered = recordsTotal, recordsTotal, data = centers };
+        var pageSize = Parse(Request.Form["length"]);
+        var skip = Parse(Request.Form["start"]);
+        var search = Request.Form["search[value]"];
+        var orderColumn = Request.Form[string.Concat("columns[", Request.Form["order[0][column]"], "][name]")];
+        var orderColumnDirection = Request.Form["order[0][dir]"];
+        var (data, recordsTotal) = await _unitOfWork.Centers.GetAll(search: search, orderBy: orderColumn, orderDirection: orderColumnDirection, skip: skip, take: pageSize);
+        var jsonData = new { recordsFiltered = recordsTotal, recordsTotal, data };
         return Json(jsonData);
-        //return Json(centers);
     }
 
 
@@ -53,7 +57,6 @@ public class CenterController : Controller
     {
         return View(center);
     }
-
     [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> SaveCreate(CreateCenterVm center)
