@@ -2052,6 +2052,14 @@
         },
         "runtime": {
           "Core.dll": {}
+        },
+        "resources": {
+          "Ar/Core.resources.dll": {
+            "locale": "Ar"
+          },
+          "En/Core.resources.dll": {
+            "locale": "En"
+          }
         }
       }
     }

@@ -15,4 +15,30 @@
       <Folder Include="Interfaces\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <EmbeddedResource Update="Localization\SharedResources.Ar.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>SharedResources.Ar.Designer.cs</LastGenOutput>
+        <DependentUpon>SharedResources.cs</DependentUpon>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Localization\SharedResources.En.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>SharedResources.En.Designer.cs</LastGenOutput>
+        <DependentUpon>SharedResources.cs</DependentUpon>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Localization\SharedResources.Ar.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>SharedResources.Ar.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Localization\SharedResources.En.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>SharedResources.En.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>

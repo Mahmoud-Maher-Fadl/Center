@@ -1,8 +1,18 @@
-﻿@{
+﻿@using Core.Localization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResources> StringLocalizer
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">@StringLocalizer[SharedResourcesKeys.Welcome]</h1>
 </div>
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+}
+<li>@requestCulture?.RequestCulture.Culture.Name</li>
+<li>@DateTime.Now.ToLongDateString()</li>
+<li>@(100.50.ToString("C"))</li>
+<li>@(100.50.ToString("F2"))</li>

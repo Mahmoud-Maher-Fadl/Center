@@ -3,6 +3,7 @@ using System.Security.Claims;
 using Core.common;
 using Core.Models.User;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Models;
 
@@ -28,7 +29,7 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         var userId = _contextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (userId == null) 
+        if (userId == null)
             return View();
         var student = _unitOfWork.Students.GetByUserId(userId).Result;
         if (student is not null)
@@ -59,6 +60,19 @@ public class HomeController : Controller
             return RedirectToAction("Details", "Students", new { id = student.Id });
 
         return Content("User Not Signed In");
+    }
+
+
+    [HttpPost]
+    public IActionResult SelectLanguage(string culture, string returnUrl)
+    {
+        Response.Cookies.Append
+        (
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+            new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+        );
+        return LocalRedirect(returnUrl);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

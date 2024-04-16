@@ -23,8 +23,7 @@ public class CenterRepository : BaseRepository<Core.Models.Center.Center>, ICent
     {
         var centers = _context.Centers
             .Where(x =>
-                string.IsNullOrEmpty(search)
-                || string.IsNullOrWhiteSpace(search)
+                string.IsNullOrWhiteSpace(search)
                 || x.Name.Contains(search)
                 || x.Location.Contains(search))
             .Select(x => new GetAllCentersVm()
@@ -35,12 +34,11 @@ public class CenterRepository : BaseRepository<Core.Models.Center.Center>, ICent
             });
         var count = centers.Count();
         centers = centers.Skip(skip).Take(take); /* if it in one step with where cond
-                                                  the pagination won't work cause of the count must b for all data*/
+                                                  the pagination won't work cause of the count must be for all data*/
         if (orderBy.IsNullOrEmpty())
             return (await centers.ToListAsync(), count);
 
-        centers = centers.AsQueryable()
-            .OrderBy(orderBy + " " + orderDirection);
+        centers = centers.OrderBy(orderBy + " " + orderDirection);
         return (await centers.ToListAsync(), count);
     }
 
@@ -60,13 +58,13 @@ public class CenterRepository : BaseRepository<Core.Models.Center.Center>, ICent
         return center;
     }
 
-    public IEnumerable<SelectListItem> GetCentersSelectList()
+    public async Task<IEnumerable<SelectListItem>> GetCentersSelectList()
     {
-        return _context.Centers
+        return await _context.Centers
             .Select(x => new SelectListItem
             {
                 Value = x.Id.ToString(),
                 Text = x.Name
-            });
+            }).ToListAsync();
     }
 }

@@ -22,3 +22,10 @@ G:\aait\Center\Core\obj\Debug\net7.0\Core.dll
 G:\aait\Center\Core\obj\Debug\net7.0\refint\Core.dll
 G:\aait\Center\Core\obj\Debug\net7.0\Core.pdb
 G:\aait\Center\Core\obj\Debug\net7.0\ref\Core.dll
+G:\aait\Center\Core\bin\Debug\net7.0\Ar\Core.resources.dll
+G:\aait\Center\Core\bin\Debug\net7.0\En\Core.resources.dll
+G:\aait\Center\Core\obj\Debug\net7.0\Core.Localization.SharedResources.Ar.resources
+G:\aait\Center\Core\obj\Debug\net7.0\Core.Localization.SharedResources.En.resources
+G:\aait\Center\Core\obj\Debug\net7.0\Core.csproj.GenerateResource.cache
+G:\aait\Center\Core\obj\Debug\net7.0\Ar\Core.resources.dll
+G:\aait\Center\Core\obj\Debug\net7.0\En\Core.resources.dll

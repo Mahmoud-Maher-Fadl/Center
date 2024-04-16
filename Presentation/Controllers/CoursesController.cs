@@ -93,7 +93,7 @@ public class CoursesController : Controller
     }
 
     [HttpGet]
-    public IActionResult Update(int id)
+    public async Task<IActionResult> Update(int id)
     {
         var course = _unitOfWork.Courses.GetById(id).Result;
         if (course is null)
@@ -105,7 +105,7 @@ public class CoursesController : Controller
             Hours = course.Hours,
             Price = course.Price,
             CenterId = course.CenterId,
-            Centers = _unitOfWork.Centers.GetCentersSelectList()
+            Centers = await _unitOfWork.Centers.GetCentersSelectList()
         };
         return View(courseVm);
     }

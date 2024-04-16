@@ -1,9 +1,13 @@
+using System.Globalization;
 using Core.common;
 using Core.Models.User;
 using Infrastructure.common;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Presentation;
 using Presentation.Validations;
 using Presentation.Validations.Implementations;
@@ -45,7 +49,29 @@ builder.Services.AddScoped<IStudentsCrud, StudentsCrud>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-//builder.Services.AddTransient<IJwtService, JwtService>();
+
+#region Localization Services
+
+builder.Services.AddLocalization(opt => { opt.ResourcesPath = ""; });
+
+builder.Services.AddMvc()
+    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+    .AddDataAnnotationsLocalization();
+
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var supportedCultures = new List<CultureInfo>
+    {
+        new CultureInfo("en-US"),
+        new CultureInfo("ar-EG"),
+    };
+    options.DefaultRequestCulture = new RequestCulture( "en-US");
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
+});
+
+#endregion
+
 
 builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
@@ -58,12 +84,18 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseCors("AllowAllOrigins");
 app.UseHttpsRedirection();
+#region Localization Middleware
+
+var options = app.Services.GetService<IOptions<RequestLocalizationOptions>>();
+app.UseRequestLocalization(options!.Value);
+#endregion
+
+
 app.UseStaticFiles();
 
 app.UseRouting();

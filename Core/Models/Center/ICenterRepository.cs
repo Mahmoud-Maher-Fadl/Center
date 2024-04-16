@@ -12,5 +12,5 @@ public interface ICenterRepository : IBaseRepository<Center>
 
     Task<Center?> GetById(int id);
     Task<Center?> GetByUserId(string userId);
-    IEnumerable<SelectListItem> GetCentersSelectList();
+    Task<IEnumerable<SelectListItem>> GetCentersSelectList();
 }

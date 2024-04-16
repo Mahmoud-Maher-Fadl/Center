@@ -1,9 +1,9 @@
 ﻿using Core.common;
 using Core.ViewModels.Center;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Validations.Interfaces;
-using static System.Int32;
 
 namespace Presentation.Controllers;
 
@@ -23,6 +23,8 @@ public class CenterController : Controller
     [HttpGet]
     public IActionResult Index()
     {
+        var requestCulture = Request.HttpContext.Features.Get<IRequestCultureFeature>()?.RequestCulture.Culture.Name;
+        Console.WriteLine(requestCulture);
         return View();
     }
 
@@ -30,8 +32,8 @@ public class CenterController : Controller
     [HttpPost]
     public async Task<IActionResult> GetAll()
     {
-        var pageSize = Parse(Request.Form["length"]);
-        var skip = Parse(Request.Form["start"]);
+        var pageSize = int.Parse(Request.Form["length"]);
+        var skip = int.Parse(Request.Form["start"]);
         var search = Request.Form["search[value]"];
         var orderColumn = Request.Form[string.Concat("columns[", Request.Form["order[0][column]"], "][name]")];
         var orderColumnDirection = Request.Form["order[0][dir]"];
