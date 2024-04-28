@@ -29,3 +29,5 @@ G:\aait\Center\Core\obj\Debug\net7.0\Core.Localization.SharedResources.En.resour
 G:\aait\Center\Core\obj\Debug\net7.0\Core.csproj.GenerateResource.cache
 G:\aait\Center\Core\obj\Debug\net7.0\Ar\Core.resources.dll
 G:\aait\Center\Core\obj\Debug\net7.0\En\Core.resources.dll
+G:\aait\Center\Core\obj\Debug\net7.0\Ar\Core.resources.cs
+G:\aait\Center\Core\obj\Debug\net7.0\En\Core.resources.cs

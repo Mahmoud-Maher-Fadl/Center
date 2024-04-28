@@ -2,6 +2,27 @@
   "version": 3,
   "targets": {
     "net7.0": {
+      "Mapster/7.4.1-pre01": {
+        "type": "package",
+        "dependencies": {
+          "Mapster.Core": "1.2.2-pre01"
+        },
+        "compile": {
+          "lib/net7.0/Mapster.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Mapster.dll": {}
+        }
+      },
+      "Mapster.Core/1.2.2-pre01": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Mapster.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Mapster.Core.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -2820,6 +2841,36 @@
     }
   },
   "libraries": {
+    "Mapster/7.4.1-pre01": {
+      "sha512": "b7YEDoh4nuODGF7wUjgkxA3bTLLt7TxfPkKiFQTgCrNYHem1VVaJyXgsG9RVeQQ44+hoo69IfqENNKn0ox9ddg==",
+      "type": "package",
+      "path": "mapster/7.4.1-pre01",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net6.0/Mapster.dll",
+        "lib/net7.0/Mapster.dll",
+        "lib/net8.0/Mapster.dll",
+        "mapster.7.4.1-pre01.nupkg.sha512",
+        "mapster.nuspec"
+      ]
+    },
+    "Mapster.Core/1.2.2-pre01": {
+      "sha512": "FuNCfTHytW9yeSuGHZ9f8u4cgbzhPL0GqoypA4LD99m0zkafs73IcaMxmbUtYjRThof+Z+jcEQ/suVYTkMpTkA==",
+      "type": "package",
+      "path": "mapster.core/1.2.2-pre01",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net6.0/Mapster.Core.dll",
+        "lib/net7.0/Mapster.Core.dll",
+        "lib/net8.0/Mapster.Core.dll",
+        "mapster.core.1.2.2-pre01.nupkg.sha512",
+        "mapster.core.nuspec"
+      ]
+    },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
       "sha512": "fVQsSXNZz38Ysx8iKwwqfOLHhLrAeKEMBS5Ia3Lh7BJjOC2vPV28/yk08AovOMsB3SNQPGnE7bv+lsIBTmAkvw==",
       "type": "package",
@@ -8084,6 +8135,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Mapster >= 7.4.1-pre01",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 7.0.17",
       "Microsoft.AspNetCore.Mvc.Razor >= 2.2.0"
     ]
@@ -8127,6 +8179,10 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "Mapster": {
+            "target": "Package",
+            "version": "[7.4.1-pre01, )"
+          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[7.0.17, )"
@@ -8152,7 +8208,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.407\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }

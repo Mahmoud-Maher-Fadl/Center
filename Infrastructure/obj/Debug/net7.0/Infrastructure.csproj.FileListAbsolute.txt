@@ -33,4 +33,4 @@ G:\aait\Center\Infrastructure\obj\Debug\net7.0\Infrastructure.genruntimeconfig.c
 G:\aait\Center\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll
 G:\aait\Center\Infrastructure\bin\Debug\net7.0\Ar\Core.resources.dll
 G:\aait\Center\Infrastructure\bin\Debug\net7.0\En\Core.resources.dll
-G:\aait\Center\Infrastructure\obj\Debug\net7.0\Infrastr.15EFFBFE.Up2Date
+G:\aait\Center\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CopyComplete

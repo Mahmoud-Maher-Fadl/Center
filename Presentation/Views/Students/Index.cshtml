@@ -121,17 +121,17 @@
     $(document).ready(function() 
     {
           $("#studentsTable").dataTable
-            (
-                {
-                    "order": [], // Disable initial sorting
-                    "columnDefs": 
-                    [{
-                        "targets": [5], // Class to target columns
-                        "searchable":false,
-                        "orderable": false // Set specific columns to be non-sortable
-                    }]
-                }
-            );
+          (
+             {
+                "order": [], // Disable initial sorting
+                "columnDefs": 
+                [{
+                    "targets": [5], // Class to target columns
+                    "searchable":false,
+                    "orderable": false // Set specific columns to be non-sortable
+                }]
+             }
+          );
     })
     </script>
 }

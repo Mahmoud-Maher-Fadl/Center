@@ -620,4 +620,7 @@ G:\aait\Center\Presentation\bin\Debug\net7.0\libman.json
 G:\aait\Center\Presentation\bin\Debug\net7.0\System.Linq.Dynamic.Core.dll
 G:\aait\Center\Presentation\bin\Debug\net7.0\Ar\Core.resources.dll
 G:\aait\Center\Presentation\bin\Debug\net7.0\En\Core.resources.dll
-G:\aait\Center\Presentation\obj\Debug\net7.0\Presenta.BC777DBE.Up2Date
+G:\aait\Center\Presentation\bin\Debug\net7.0\Scrutor.dll
+G:\aait\Center\Presentation\obj\Debug\net7.0\Presentation.csproj.CopyComplete
+G:\aait\Center\Presentation\bin\Debug\net7.0\Mapster.dll
+G:\aait\Center\Presentation\bin\Debug\net7.0\Mapster.Core.dll

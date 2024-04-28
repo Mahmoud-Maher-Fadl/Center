@@ -196,7 +196,6 @@ public class TeachersController : Controller
             if (studentCourseVm is not null)
                 student.Grade = studentCourseVm.Grade;
         }
-
         await _unitOfWork.StudentCourses.UpdateRange(courseStudents);
         await _unitOfWork.Complete();
         var teacherId = Request.Cookies["teacherId"];

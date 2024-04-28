@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "UHD4pDhm7FO3Lq4RxbCmY/MIVFH1GaHV4How9kWj8rLvwYOW5v9gtdQ+VWD91d2mmrgb0lUNQBWo30rscPPyvQ==",
+  "dgSpecHash": "74f4sgXKbZq6Pf1ds9Hua3pBvlkAY8egEoWE1JpYKWmnrjhnj4KAhJgY/KXlTdxiKsysnuZzOQ6C4ADWssm+jw==",
   "success": true,
   "projectFilePath": "G:\\aait\\Center\\Core\\Core.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\DELL\\.nuget\\packages\\mapster\\7.4.1-pre01\\mapster.7.4.1-pre01.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\mapster.core\\1.2.2-pre01\\mapster.core.1.2.2-pre01.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

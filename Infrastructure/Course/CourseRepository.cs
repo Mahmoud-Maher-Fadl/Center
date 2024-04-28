@@ -4,6 +4,7 @@ using Core.ViewModels.Courses;
 using Core.ViewModels.StudentCourse;
 using Infrastructure.common;
 using Infrastructure.Data;
+using Mapster;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,14 +16,16 @@ public class CourseRepository : BaseRepository<Core.Models.Course.Course>, ICour
     {
     }
 
-    public Task<List<GetAllCoursesVm>> GetAll(int? id)
+    public async Task<List<GetAllCoursesVm>> GetAll(int? id)
     {
-        var courses = Context.Courses
+        var courses =await Context.Courses
             .Where(x => x.CenterId == id)
             .Include(x => x.Center)
             .Include(x => x.Teachers)
             .Include(x => x.StudentCourse)
-            .Select(x => new GetAllCoursesVm
+            .ProjectToType<GetAllCoursesVm>()
+            .ToListAsync();
+            /*.Select(x => new GetAllCoursesVm
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -30,7 +33,7 @@ public class CourseRepository : BaseRepository<Core.Models.Course.Course>, ICour
                 Hours = x.Hours,
                 StudentCount = x.StudentCourse.Count(sc => sc.CourseId == x.Id),
                 TeachersCount = x.Teachers.Count(t => t.CourseId == x.Id)
-            }).ToListAsync();
+            }).ToListAsync();*/
         return courses;
     }
 

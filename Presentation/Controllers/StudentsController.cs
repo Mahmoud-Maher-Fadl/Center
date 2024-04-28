@@ -138,16 +138,6 @@ public class StudentsController : Controller
 
         var result = await _studentsCrud.Update(studentVm);
         return Json(new { result.IsSuccess, result.Message });
-        /*if (ModelState.IsValid)
-        {
-            var result = await _studentsCrud.Update(studentVm);
-            if (result.IsSuccess)
-                return RedirectToAction("Index", "Students");
-            return Content(result.Message);
-        }
-
-        studentVm.Courses = _unitOfWork.Courses.GetCenterCoursesSelectList(studentVm.CenterId).ToHashSet();
-        return View("Update", studentVm);*/
     }
 
     [HttpGet]

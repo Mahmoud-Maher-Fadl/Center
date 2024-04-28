@@ -3,12 +3,48 @@
   "WorkspaceRootPath": "G:\\aait\\Center\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|g:\\aait\\center\\presentation\\views\\shared\\_selectlanguagepartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|solutionrelative:presentation\\views\\shared\\_selectlanguagepartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|g:\\aait\\center\\presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|solutionrelative:presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C7FB92-5C0B-4484-98D0-0DC3B6F3C30C}|Infrastructure\\Infrastructure.csproj|g:\\aait\\center\\infrastructure\\studentcourse\\studentcourserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C7FB92-5C0B-4484-98D0-0DC3B6F3C30C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\studentcourse\\studentcourserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|g:\\aait\\center\\presentation\\controllers\\teacherscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controllers\\teacherscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|g:\\aait\\center\\presentation\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|g:\\aait\\center\\presentation\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|g:\\aait\\center\\presentation\\views\\teachers\\teachercoursestudents.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|solutionrelative:presentation\\views\\teachers\\teachercoursestudents.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|g:\\aait\\center\\presentation\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|solutionrelative:presentation\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|g:\\aait\\center\\presentation\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|g:\\aait\\center\\presentation\\controllers\\centercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controllers\\centercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|g:\\aait\\center\\presentation\\views\\shared\\_selectlanguagepartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|solutionrelative:presentation\\views\\shared\\_selectlanguagepartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|g:\\aait\\center\\presentation\\views\\center\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FAE1698F-6CE9-4334-A0EC-8E9478748EB8}|Presentation\\Presentation.csproj|solutionrelative:presentation\\views\\center\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,30 +54,147 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "StudentCourseRepository.cs",
+              "DocumentMoniker": "G:\\aait\\Center\\Infrastructure\\StudentCourse\\StudentCourseRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\StudentCourse\\StudentCourseRepository.cs",
+              "ToolTip": "G:\\aait\\Center\\Infrastructure\\StudentCourse\\StudentCourseRepository.cs",
+              "RelativeToolTip": "Infrastructure\\StudentCourse\\StudentCourseRepository.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAuwCsAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T09:49:45.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TeacherCourseStudents.cshtml",
+              "DocumentMoniker": "G:\\aait\\Center\\Presentation\\Views\\Teachers\\TeacherCourseStudents.cshtml",
+              "RelativeDocumentMoniker": "Presentation\\Views\\Teachers\\TeacherCourseStudents.cshtml",
+              "ToolTip": "G:\\aait\\Center\\Presentation\\Views\\Teachers\\TeacherCourseStudents.cshtml",
+              "RelativeToolTip": "Presentation\\Views\\Teachers\\TeacherCourseStudents.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAIBJwCEAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-17T09:47:52.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TeachersController.cs",
+              "DocumentMoniker": "G:\\aait\\Center\\Presentation\\Controllers\\TeachersController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controllers\\TeachersController.cs",
+              "ToolTip": "G:\\aait\\Center\\Presentation\\Controllers\\TeachersController.cs",
+              "RelativeToolTip": "Presentation\\Controllers\\TeachersController.cs",
+              "ViewState": "AQIAAGYAAAAAAAAAAAAiwIQAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T09:45:29.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "G:\\aait\\Center\\Presentation\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controllers\\HomeController.cs",
+              "ToolTip": "G:\\aait\\Center\\Presentation\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Presentation\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAArwCYAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T09:33:22.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CoursesController.cs",
+              "DocumentMoniker": "G:\\aait\\Center\\Presentation\\Controllers\\CoursesController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controllers\\CoursesController.cs",
+              "ToolTip": "G:\\aait\\Center\\Presentation\\Controllers\\CoursesController.cs",
+              "RelativeToolTip": "Presentation\\Controllers\\CoursesController.cs",
+              "ViewState": "AQIAAHMAAAAAAAAAAADwv4wAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T09:30:36.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "G:\\aait\\Center\\Presentation\\Program.cs",
+              "RelativeDocumentMoniker": "Presentation\\Program.cs",
+              "ToolTip": "G:\\aait\\Center\\Presentation\\Program.cs",
+              "RelativeToolTip": "Presentation\\Program.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAADgAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-16T13:20:33.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StudentsController.cs",
+              "DocumentMoniker": "G:\\aait\\Center\\Presentation\\Controllers\\StudentsController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controllers\\StudentsController.cs",
+              "ToolTip": "G:\\aait\\Center\\Presentation\\Controllers\\StudentsController.cs",
+              "RelativeToolTip": "Presentation\\Controllers\\StudentsController.cs",
+              "ViewState": "AQIAAKEAAAAAAAAAAAAUwLYAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T09:08:26.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "G:\\aait\\Center\\Presentation\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Presentation\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "G:\\aait\\Center\\Presentation\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Presentation\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-17T08:39:28.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "G:\\aait\\Center\\Presentation\\Views\\Center\\Create.cshtml",
+              "RelativeDocumentMoniker": "Presentation\\Views\\Center\\Create.cshtml",
+              "ToolTip": "G:\\aait\\Center\\Presentation\\Views\\Center\\Create.cshtml",
+              "RelativeToolTip": "Presentation\\Views\\Center\\Create.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-17T08:30:22.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "CenterController.cs",
               "DocumentMoniker": "G:\\aait\\Center\\Presentation\\Controllers\\CenterController.cs",
               "RelativeDocumentMoniker": "Presentation\\Controllers\\CenterController.cs",
               "ToolTip": "G:\\aait\\Center\\Presentation\\Controllers\\CenterController.cs",
               "RelativeToolTip": "Presentation\\Controllers\\CenterController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAABMAAAA",
+              "ViewState": "AQIAAEQAAAAAAAAAAAAswFoAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-16T13:06:11.206Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
               "Title": "_SelectLanguagePartial.cshtml",
               "DocumentMoniker": "G:\\aait\\Center\\Presentation\\Views\\Shared\\_SelectLanguagePartial.cshtml",
               "RelativeDocumentMoniker": "Presentation\\Views\\Shared\\_SelectLanguagePartial.cshtml",
-              "ToolTip": "G:\\aait\\Center\\Presentation\\Views\\Shared\\_SelectLanguagePartial.cshtml*",
-              "RelativeToolTip": "Presentation\\Views\\Shared\\_SelectLanguagePartial.cshtml*",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABMAAAAoAAAA",
+              "ToolTip": "G:\\aait\\Center\\Presentation\\Views\\Shared\\_SelectLanguagePartial.cshtml",
+              "RelativeToolTip": "Presentation\\Views\\Shared\\_SelectLanguagePartial.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-04-16T13:05:21.847Z",
               "EditorCaption": ""

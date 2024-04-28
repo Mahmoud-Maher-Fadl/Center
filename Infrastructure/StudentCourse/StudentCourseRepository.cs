@@ -32,8 +32,6 @@ public class StudentCourseRepository : BaseRepository<Core.Models.StudentCourse.
         try
         {
             var query = Context.StudentCourses.AsQueryable();
-
-            // Apply filters if provided
             query = filters.Aggregate(query, (current, filter) => current.Where(filter));
             // ==>
             /*foreach (var filter in filters)

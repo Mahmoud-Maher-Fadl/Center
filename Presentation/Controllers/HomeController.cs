@@ -11,16 +11,14 @@ namespace Presentation.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
     private readonly IHttpContextAccessor _contextAccessor;
     private readonly IUnitOfWork _unitOfWork;
     private readonly SignInManager<User> _signInManager;
 
 
-    public HomeController(ILogger<HomeController> logger, IHttpContextAccessor contextAccessor, IUnitOfWork unitOfWork,
+    public HomeController(IHttpContextAccessor contextAccessor, IUnitOfWork unitOfWork,
         SignInManager<User> signInManager)
     {
-        _logger = logger;
         _contextAccessor = contextAccessor;
         _unitOfWork = unitOfWork;
         _signInManager = signInManager;

@@ -2,6 +2,7 @@
 using Core.ViewModels.Students;
 using Infrastructure.common;
 using Infrastructure.Data;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Student;
@@ -17,7 +18,9 @@ public class StudentRepository : BaseRepository<Core.Models.Student.Student>, IS
         return Context.Students
             .Where(x => x.CenterId == id)
             .Include(x => x.StudentCourses)
-            .Select(x => new GetAllStudentsVm()
+            .ProjectToType<GetAllStudentsVm>()
+            .ToListAsync();
+            /*.Select(x => new GetAllStudentsVm()
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -27,7 +30,7 @@ public class StudentRepository : BaseRepository<Core.Models.Student.Student>, IS
                 CenterName = x.Center.Name,
                 CoursesCount = x.StudentCourses.Count
             })
-            .ToListAsync();
+            .ToListAsync();*/
     }
 
     public async Task<Core.Models.Student.Student?> GetById(int id)

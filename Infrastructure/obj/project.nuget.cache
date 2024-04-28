@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "uHrP/2sEJtEeQ0ryWhXhbwbJKC/R4merTfnBqfjqjtdEZn+8L4+8J2kD+r7VTDPs6Wz4GtFwY6moOeYfYl0ycw==",
+  "dgSpecHash": "nR5qbFkZrSdQJpp7RQbD06E6oIL8fl7m6lBzbG5F8R0EZf1hh2QRKz1cMi3HZtQau6+pSqHeJiqX1/7dhroJuA==",
   "success": true,
   "projectFilePath": "G:\\aait\\Center\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\mapster\\7.4.1-pre01\\mapster.7.4.1-pre01.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\mapster.core\\1.2.2-pre01\\mapster.core.1.2.2-pre01.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
